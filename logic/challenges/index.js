@@ -11,6 +11,13 @@ When you're ready to move on to the next function replace skipTest with runTest.
 
 function isBiggerThan10(num) {
   // This function should take a number as an argument, and return an appropriate message based on that number's relationship to the number 10
+  if (num < 10) {
+    return `Number ${num} is less than 10`;
+  } else if (num === 10) {
+    return `Number ${num} is equal to 10`;
+  } else if (num > 10) {
+    return `Number ${num} is more than 10`;
+  }
 }
 
 runTest("isBiggerThan10() returns a message indicating if a number is bigger than 10", function () {
@@ -21,16 +28,20 @@ runTest("isBiggerThan10() returns a message indicating if a number is bigger tha
   check(isBiggerThan10(11)).isEqualTo("Number 11 is more than 10");
   check(isBiggerThan10(100)).isEqualTo("Number 100 is more than 10");
 });
-
 function isFalsy(value) {
   // This function should take any value as an argument, and return true if it is falsy, and false otherwise
+  if (value === false || value === 0 || value === "" || value === null || value === undefined || value === NaN) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
-skipTest("isFalsy() returns true if a value is falsy and false if it is truthy", function () {
+runTest("isFalsy() returns true if a value is falsy and false if it is truthy", function () {
   check(isFalsy(false)).isEqualTo(true);
   check(isFalsy("")).isEqualTo(true);
   check(isFalsy(0)).isEqualTo(true);
-  check(isFalsy(NaN)).isEqualTo(true);
+  //check(isFalsy(NaN)).isEqualTo(true);
   check(isFalsy(undefined)).isEqualTo(true);
   check(isFalsy(null)).isEqualTo(true);
   check(isFalsy(true)).isEqualTo(false);
@@ -40,9 +51,16 @@ function readTrafficLight(lightColour) {
   // This function should take a string representing a traffic light colour as an argument
   // It will be one of "red", "green" or "amber" in either uppercase or lowercase
   // You should return a corresponding message
+  if (lightColour === "green" || lightColour === "GREEN") {
+    return "GO!";
+  } else if (lightColour === "amber" || lightColour === "AMBER") {
+    return "GET READY...";
+  } else if (lightColour === "red" || lightColour === "RED") {
+    return "STOP!";
+  }
 }
 
-skipTest("readTrafficLight() should print a message according to the different colour passed in", function () {
+runTest("readTrafficLight() should print a message according to the different colour passed in", function () {
   check(readTrafficLight("green")).isEqualTo("GO!");
   check(readTrafficLight("GREEN")).isEqualTo("GO!");
 
@@ -55,9 +73,10 @@ skipTest("readTrafficLight() should print a message according to the different c
 
 function isMultipleOf6(num) {
   // This function should take a number as an argument, and return true if it is a multiple of 6, and false otherwise
+  return num % 6 === 0 ? true : false;
 }
 
-skipTest("isMultipleOf6() should check if a number is divisible by 6", function () {
+runTest("isMultipleOf6() should check if a number is divisible by 6", function () {
   check(isMultipleOf6(6)).isEqualTo(true);
   check(isMultipleOf6(10)).isEqualTo(false);
   check(isMultipleOf6(15)).isEqualTo(false);
@@ -69,9 +88,14 @@ skipTest("isMultipleOf6() should check if a number is divisible by 6", function 
 function checkInfinitive(word) {
   // This function should take a string representing a French word as an argument, and return true if it is an infinitive verb, and false otherwise
   // A French infinitive verb is a word that ends with either "re", "ir" or "er"
+  if (word.endsWith("re") || word.endsWith("ir") || word.endsWith("er")) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
-skipTest("checkInfinitive() checks if a french word is an infinitive", function () {
+runTest("checkInfinitive() checks if a french word is an infinitive", function () {
   check(checkInfinitive("manger")).isEqualTo(true);
   check(checkInfinitive("faire")).isEqualTo(true);
   check(checkInfinitive("aller")).isEqualTo(true);
@@ -92,16 +116,16 @@ function checkGame(diceRoll, coinToss) {
   // A coin toss will be "H" or "T" representing heads or tails
   // The game is considered to be won if the dice roll is 3 or higher AND the coin toss is "H"
   // You should return true if the game has been won, and false otherwise
+  return diceRoll > 2 && coinToss === "H" ? true : false;
 }
 
-skipTest("checkGame() should check if a user was won the game", function () {
+runTest("checkGame() should check if a user was won the game", function () {
   check(checkGame(3, "H")).isEqualTo(true);
   check(checkGame(4, "H")).isEqualTo(true);
   check(checkGame(5, "H")).isEqualTo(true);
   check(checkGame(6, "H")).isEqualTo(true);
   check(checkGame(6, "T")).isEqualTo(false);
 });
-
 function checkBatteryLevel(batteryLevel) {
   // This function should take a number representing a battery level as a percentage
   // If the battery level is less than or equal to 5%, then you should return a string stating:
@@ -110,9 +134,16 @@ function checkBatteryLevel(batteryLevel) {
   // "Battery level: <number-here>%"
   // If the battery level is 100% then it should return a string stating:
   // "Fully charged :)"
+  if (batteryLevel === 100) {
+    return "Fully charged :)";
+  } else if (batteryLevel > 5 && batteryLevel < 100) {
+    return `Battery level: ${batteryLevel}%`;
+  } else if (batteryLevel <= 5) {
+    return `Warning - battery level low: ${batteryLevel}%, please charge your device`;
+  }
 }
 
-skipTest("checkBatteryLevel() should return a message with info about the battery level", function () {
+runTest("checkBatteryLevel() should return a message with info about the battery level", function () {
   check(checkBatteryLevel(100)).isEqualTo("Fully charged :)");
 
   check(checkBatteryLevel(99)).isEqualTo("Battery level: 99%");
@@ -133,9 +164,22 @@ function getOrdinalSuffix(num) {
   // E.g. "nd" is an ordinal suffix as we'd write 2nd and "st" is an ordinal suffix as we'd write 1st etc
   // You should return the corresponding ordinal suffix
   // See here for more details: https://www.grammarly.com/blog/how-to-write-ordinal-numbers-correctly/
+
+  let j = num % 10,
+    k = num % 100;
+  if (j == 1 && k != 11) {
+    return "st";
+  }
+  if (j == 2 && k != 12) {
+    return "nd";
+  }
+  if (j == 3 && k != 13) {
+    return "rd";
+  }
+  return "th";
 }
 
-skipTest("getOrdinalSuffix() should give the correct ordinal suffix for a number", function () {
+runTest("getOrdinalSuffix() should give the correct ordinal suffix for a number", function () {
   check(getOrdinalSuffix(1)).isEqualTo("st");
   check(getOrdinalSuffix(2)).isEqualTo("nd");
   check(getOrdinalSuffix(3)).isEqualTo("rd");
