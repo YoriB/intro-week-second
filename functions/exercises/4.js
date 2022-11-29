@@ -1,7 +1,8 @@
 const { check, runTest } = require("../../test-api");
 
-function capitaliseString() {
+function capitaliseString(word) {
   // return the passed string as upper case
+  return word.toUpperCase()
 }
 
 runTest("capitaliseString() can capitalise a single word", function () {

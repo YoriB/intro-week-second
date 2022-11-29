@@ -1,7 +1,8 @@
 const { check, runTest } = require("../../test-api");
 
-function multiply() {
+function multiply(num1, num2) {
   // return the product of two passed numbers
+  return num1 * num2
 }
 
 runTest("multiply() can multiply 2 numbers together", function () {
