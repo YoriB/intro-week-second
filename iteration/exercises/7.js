@@ -2,6 +2,9 @@ const { check, runTest } = require("../../test-api");
 
 const tutors = ["Anat", "Paul C", "Paul R", "Jonny", "Mitch", "Vel", "Alex", "Ant"];
 const tutorsAndIndex = [];
+for ( let i = 0; i < tutors.length; i++){
+  tutorsAndIndex.push([i] : tutor[i])
+}
 
 // your loop here...
 
