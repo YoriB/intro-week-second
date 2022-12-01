@@ -19,6 +19,9 @@ This function should take a string as an argument
 Somwhere in the middle of the string, there will be a series of consecutive digits composing a number
 You should extract that number from the string and return it
 */
+function extractCode(str) {
+  return parseInt(str.match(/\d+/g))
+}
 
 runTest("extractCode() can find the total from a single code string", function () {
   check(extractCode("abcd67yuio")).isEqualTo(67);
