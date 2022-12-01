@@ -11,6 +11,7 @@ When you're ready to move on to the next function replace skipTest with runTest.
 
 function accessObject(obj, key) {
   // This function should take an object and a key as its arguments and return the value found at the provided key in the input object
+  return obj[key]
 }
 
 runTest("accessObject() can access a property value using a key", function () {
@@ -20,9 +21,15 @@ runTest("accessObject() can access a property value using a key", function () {
 
 function checkIfPropertyExists(obj, key) {
   // This function should take an object and a key as its arguments and return true if the input object contains the provided key and false otherwise
+
+    if (obj.hasOwnProperty(key)) {
+        // handle prop as required
+        return true;
+    }
+    return false;
 }
 
-skipTest("checkIfPropertyExists() checks if a property exists inside an object", function () {
+runTest("checkIfPropertyExists() checks if a property exists inside an object", function () {
   check(checkIfPropertyExists({ name: "jonny", age: 32 }, "name")).isEqualTo(true);
   check(checkIfPropertyExists({ name: "jonny", age: 32 }, "age")).isEqualTo(true);
   check(checkIfPropertyExists({ name: "jonny", age: 32 }, "pets")).isEqualTo(false);
@@ -30,9 +37,12 @@ skipTest("checkIfPropertyExists() checks if a property exists inside an object",
 
 function createObject(arr) {
   // This function should take an array consisting of two elements representing a key/ value pair as its argument and return an object with a single property based on the input
+  let obj = {};
+  obj[arr[0]] = arr[1]
+  return obj;
 }
 
-skipTest("createObject() creates a new object from a key value pair", function () {
+runTest("createObject() creates a new object from a key value pair", function () {
   check(createObject(["name", "shaq"])).isEqualTo({ name: "shaq" });
   check(createObject(["fruit", "apple"])).isEqualTo({ fruit: "apple" });
   check(createObject(["language", "haskell"])).isEqualTo({ language: "haskell" });
@@ -40,9 +50,14 @@ skipTest("createObject() creates a new object from a key value pair", function (
 
 function countProperties(obj) {
   // This function should take an object as its argument and return the total number of properties it contains
+  let count = 0;
+  for (let person in obj) {
+      count++
+  }
+  return count;
 }
 
-skipTest("countProperties() counts the number of key-value pairs for a given object", function () {
+runTest("countProperties() counts the number of key-value pairs for a given object", function () {
   check(countProperties({})).isEqualTo(0);
   check(countProperties({ name: "shaq" })).isEqualTo(1);
   check(countProperties({ name: "shaq", job: "tutor", city: "Manchester" })).isEqualTo(3);
@@ -51,9 +66,16 @@ skipTest("countProperties() counts the number of key-value pairs for a given obj
 function createArrow(direction) {
   // This function should take a string representing a direction ("left", "right", "up" or "down") as its argument and return the corresponding arrow ("←", "→", "↑", "↓")
   // You don't need to utilise an object here, but think about how you could do so
+  let compass = {"left" : "←","right" : "→","up" : "↑","down" : "↓"}
+  for (const key in compass) {
+ if (key === direction) {
+ 
+   return compass[key];
 }
 
-skipTest("createArrow() will return an arrow pointing in the right direction", function () {
+}
+}
+runTest("createArrow() will return an arrow pointing in the right direction", function () {
   check(createArrow("left")).isEqualTo("←");
   check(createArrow("right")).isEqualTo("→");
   check(createArrow("up")).isEqualTo("↑");
@@ -76,9 +98,11 @@ function updateVoterAddress(voter, correctHouseNumber) {
   The voter's house number is incorrect and you should update it to be the one provided
   This function does NOT need to return anything
   */
+  voter['address']['houseNumber'] = correctHouseNumber;
+  
 }
 
-skipTest("updateVoterAddress() updates the voter's houseNumber", function () {
+runTest("updateVoterAddress() updates the voter's houseNumber", function () {
   const voter = {
     name: "Alex",
     age: 39,
@@ -116,9 +140,11 @@ function createUserString(user) {
   This is a good use case for String Template Literals:
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
   */
+  
+return (`${'name'}: ${user['name']}, ${'age'}: ${user['age']}, ${'language'}: ${user['language']}`);
 }
 
-skipTest("createUserString() will create a message from an details object", function () {
+runTest("createUserString() will create a message from an details object", function () {
   check(createUserString({ name: "Mitch", age: 30, language: "Javascript" })).isEqualTo(
     "name: Mitch, age: 30, language: Javascript"
   );
@@ -137,9 +163,16 @@ function updateCoinMachine(coinMachine, coin) {
   }
   You should 'add the provided coin to the machine' by altering the associated property and return the updated coinMachine
   */
+  for (let key in coinMachine) {
+    if (key === coin) {
+        coinMachine[key] ++
+    }
+}
+return coinMachine
 }
 
-skipTest("updateCoinMachine() will create a message from an details object", function () {
+
+runTest("updateCoinMachine() will create a message from an details object", function () {
   check(updateCoinMachine({ "1p": 0, "2p": 0, "5p": 0, "10p": 0 }, "1p")).isEqualTo({
     "1p": 1,
     "2p": 0,

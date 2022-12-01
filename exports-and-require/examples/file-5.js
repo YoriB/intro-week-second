@@ -4,4 +4,5 @@ function printHello() {
 
 function add() {}
 
-module.exports = { printHello: printHello, add: add };
+const combined = { printHello: printHello, add: add }
+module.exports = { combined};

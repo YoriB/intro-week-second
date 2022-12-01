@@ -1,3 +1,3 @@
-const string = 'there';
+const string3 = 'there';
 
-module.exports = string;
+module.exports = string3;

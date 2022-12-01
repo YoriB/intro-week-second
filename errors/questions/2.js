@@ -4,3 +4,4 @@ try {
 } catch (error) {
   console.log(error);
 }
+//type assigning to a const

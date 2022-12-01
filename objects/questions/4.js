@@ -1,6 +1,6 @@
-const arr = [];
+const array = [];
 
-const arr = [1, 2, 3];
+const array = [1, 2, 3];
 
-// What will happen when this file is executed with Node?
-// What is the problem with this code?
+// What will happen when this file is executed with Node? syntax error
+// What is the problem with this code? arr has already been declared.

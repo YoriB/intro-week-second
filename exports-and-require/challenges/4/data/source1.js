@@ -1,3 +1,3 @@
-const string = 'hello';
+const string1 = 'hello';
 
-module.exports = string;
+module.exports = string1;

@@ -140,12 +140,12 @@ const emptyArray = [];
 console.log(emptyArray[0][1]);
 ```
 
-a) Will print `undefined`
+a) Will print `undefined` ANS
 
 b) Will print `0`
 
 c) Will print `[]`
 
-d) Will throw an `Error`
+d) Will throw an `Error` ANS
 
 ---

@@ -9,59 +9,92 @@ Each of the checks expects the value in the left hand brackets to evaluate to th
 e.g.  check(FILL_ME_IN).isEqualTo(2 + 2) becomes -> check(4).isEqualTo(2 + 2)
 */
 
-runTest("checking multiTypeArray", function () {
-  const multiTypeArray = ["I am a string", 42, true, [1, 2, 3]];
+runTest("get the multiples of 10 from 10 to 100", function () {
+  const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const multiplesOf10 = items.map((item) => {
+  return item * 10;
+  })
+  console.log(multiplesOf10)
 
-  check("string").isEqualTo(typeof multiTypeArray[0]);
-  check('number').isEqualTo(typeof multiTypeArray[1]);
-  check('boolean').isEqualTo(typeof multiTypeArray[2]);
-  check('object').isEqualTo(typeof multiTypeArray[3]);
+ check(multiplesOf10).isEqualTo([10, 20, 30, 40, 50, 60, 70, 80, 90, 100]);
 });
 
-runTest("checking alphaSample", function () {
-  const alphaSample = ["a", "b", "c"];
-  alphaSample.push("d");
-  alphaSample.push("g");
 
-  check(["a", "b", "c", "d", "g"]).isEqualTo(alphaSample);
+runTest("adds ? to the words in order to form queries", function () {
+  const words = ["who", "what", "why", "how", "huh"];
 
-  const lastItem = alphaSample.pop();
+const queries = words.map(word => {
+      return word + '?'
+ //check(queries).isEqualTo(["who?", "what?", "why?", "how?", "huh?"]);
+});
+console.log(queries)
 
-  check("g").isEqualTo(lastItem);
-  check(["a", "b", "c", "d"]).isEqualTo(alphaSample);
+  check(queries).isEqualTo(["who?", "what?", "why?", "how?", "huh?"]);
 });
 
-runTest("working with nested arrays", function () {
-  const rows = [
-    ["a", "b", "c"],
-    ["d", "e", "f"],
-    ["g", "h", "i"],
+
+runTest("will get the name and ages of each person in an array", function () {
+  const people = [
+    { name: "mitch", age: 30 },
+    { name: "anat", age: 24 },
+    { name: "howard", age: 58 },
   ];
 
-  check(["a", "b", "c"]).isEqualTo(rows[0]);
-  check(["d", "e", "f"]).isEqualTo(rows[1]);
-  check(["g", "h", "i"]).isEqualTo(rows[2]);
+ let namesAndAges= people.map(person => person.name + ' - ' + person.age)
 
-  const firstRow = rows[0];
-  check(firstRow[0]).isEqualTo("a");
-  check(firstRow[1]).isEqualTo("b");
-
-  check(rows[1][1]).isEqualTo("e");
-  check(rows[2][0]).isEqualTo("g");
-  check(rows[0][2]).isEqualTo("c");
+  check(namesAndAges).isEqualTo(["mitch - 30", "anat - 24", "howard - 58"]);
 });
 
-runTest("get the slice of an array", function () {
-  const letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n"];
+runTest("can get the multiples of 3", function () {
+  const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
-  check(["b", "c", "d"]).isEqualTo(letters.slice(1, 4));
-  check(["c"]).isEqualTo(letters.slice(2, 3));
-  check(["d", "e"]).isEqualTo(letters.slice(3, 5));
-  check(["n"]).isEqualTo(letters.slice(-1));
-  check(["m", "n"]).isEqualTo(letters.slice(-2));
-  check(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"]).isEqualTo(letters.slice(0, -4));
+  const multiplesOf3 = nums.filter(num => num%3 === 0);
+
+  check(multiplesOf3).isEqualTo([3, 6, 9, 12, 15, 18]);
 });
 
+
+runTest("can get all the words ending in er", function () {
+  const words = ["boulder", "wonder", "hello", "hi", "super", "something", "whoa", "booo", "horror"];
+
+  const wordsEndingInEr = words.filter(word => {
+    return word.endsWith('er')
+});
+
+
+  check(wordsEndingInEr).isEqualTo(["boulder", "wonder", "super"]);
+});
+skipTest("can get the names of staff over 28", function () {
+  const staff = [
+    { name: "Anat", age: 22 },
+    { name: "Paul C", age: 31 },
+    { name: "Paul R", age: 27 },
+    { name: "Vel", age: 29 },
+    { name: "Sam", age: 30 },
+    { name: "Jonny", age: 32 },
+    { name: "Ant", age: 26 },
+    { name: "Mitch", age: 28 },
+    { name: "Tom", age: 24 },
+    { name: "Alex", age: 24 },
+  ];
+  const staffOver28 = USE_ARRAY_METHOD;
+  const namesOfStaffOver28 = USE_ARRAY_METHOD;
+  check(namesOfStaffOver28).isEqualTo(["Paul C", "Vel", "Sam", "Jonny"]);
+});
+
+skipTest("can sum numbers in a list using forEach()", function () {
+  const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  let sum = 0; // <- don't change this line
+  // Try using .forEach() for this task
+  USE_ARRAY_METHOD;
+  check(sum).isEqualTo(120);
+});
+
+skipTest("can find the index position of X", function () {
+  const treasureMap = "adhfashasoasduyoaisyioyadiyfoXsasdiyoiaysidyoiaysfi";
+  const positionOfX = USE_ARRAY_METHOD;
+  // Look at different array methods on MDN or dev docs and try finding the best one for the job
+  check(positionOfX).isEqualTo(29);
+});
 // >>>>>>>>>>> DON'T ALTER ANYTHING BELOW THIS LINE <<<<<<<<<<<<<<<
-
-var FILL_ME_IN;
+var USE_ARRAY_METHOD;

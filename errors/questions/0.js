@@ -4,3 +4,4 @@ try {
 } catch (error) {
   console.log(error, "<--- error");
 }
+//type letters is not a function 

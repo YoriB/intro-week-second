@@ -1,3 +1,3 @@
-const string = 'northcoders';
+const string2 = 'northcoders';
 
-module.exports = string;
+module.exports = string2;
