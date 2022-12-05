@@ -20,7 +20,7 @@ Somwhere in the middle of the string, there will be a series of consecutive digi
 You should extract that number from the string and return it
 */
 function extractCode(str) {
-  return parseInt(str.match(/\d+/g))
+  return parseInt(str.match(/\d+/g));
 }
 
 runTest("extractCode() can find the total from a single code string", function () {
@@ -37,8 +37,10 @@ This function should take a string repesenting a sort code as an argument
 A valid sort code should adher to the format: 2 digits hyphen 2 digits hyphen 2 digits
 You should return true if the sort code is valid, and false otherwise
 */
-
-skipTest("isValidSortCode() should check is a sort code string is in the correct format", function () {
+function isValidSortCode(num) {
+  return /^\d\d-\d\d-\d\d$/.test(num);
+}
+runTest("isValidSortCode() should check is a sort code string is in the correct format", function () {
   check(isValidSortCode("10-34-67")).isEqualTo(true);
   check(isValidSortCode("51-34-58")).isEqualTo(true);
   check(isValidSortCode("85-16-23")).isEqualTo(true);
@@ -57,8 +59,10 @@ This function should take a string representing an email as an argument
 An email is considered to be professional if it does not end with a kiss ("x" or "X")
 You should return true if the email is professional, and false otherwise
 */
-
-skipTest("isProfessionalEmail() checks if an email ends with an x", function () {
+function isProfessionalEmail(letter) {
+  return /.+(?<!x)$/gim.test(letter);
+}
+runTest("isProfessionalEmail() checks if an email ends with an x", function () {
   check(isProfessionalEmail("x")).isEqualTo(false);
   check(isProfessionalEmail("Dear Sir/Madam")).isEqualTo(true);
   check(isProfessionalEmail("Dear Alex, How are you?")).isEqualTo(true);
@@ -71,12 +75,18 @@ countVowels()
 
 This function should take a string as an argument, and return a count representing the number of vowels it contains
 */
+function countVowels(word) {
+  // This function should take a string as an argument, and return a count representing the number of vowels it contains
+  // */
+  let vowels = word.match(/[aeiou]/gi);
+  return vowels === null ? 0 : vowels.length;
+}
 
-skipTest("countVowels() counts the vowels in a string", function () {
+runTest("countVowels() counts the vowels in a string", function () {
   check(countVowels("")).isEqualTo(0);
   check(countVowels("bcd")).isEqualTo(0);
   check(countVowels("a")).isEqualTo(1);
-  check(countVowels("abc")).isEqualTo(1);
+  check(countVowels("aabc")).isEqualTo(2);
   check(countVowels("AEbiO")).isEqualTo(4);
   check(countVowels("aaeee!!!")).isEqualTo(5);
 });
@@ -106,7 +116,10 @@ collection of letters for the TV show countdown.
 In countdown a valid collection contains at least 4 consonants and 3 vowels and has exactly 9 letters
 */
 
-skipTest("testValidCountdown()", function () {
+runTest("testValidCountdown()", function () {
+  function testValidCountdown(str) {
+    return /^(?=.*[bcdfghjklmnpqrstvwxyz]{4,})(?=.*[aeiou]{3,}).{9}$/.test(str);
+  }
   check(testValidCountdown("aaabbbccc")).isEqualTo(true);
   check(testValidCountdown("eeeedddff")).isEqualTo(true);
   check(testValidCountdown("aeiouwxyz")).isEqualTo(true);
@@ -140,6 +153,9 @@ You will need to check whether or not it contains *exactly* 2 consecutive occurr
 This means that there *must* be exactly 2 "l"s in total and they *must* be consecutive
 You should return true if this is the case, and false otherwise
 */
+function testExact2ConsecutiveLs(str) {
+  return /((?:([l][l])(?!\{2})))/g.test(str);
+}
 
 skipTest("testExact2ConsecutiveLs()", function () {
   check(testExact2ConsecutiveLs("ll")).isEqualTo(true);

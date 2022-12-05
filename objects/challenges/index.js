@@ -11,7 +11,7 @@ When you're ready to move on to the next function replace skipTest with runTest.
 
 function accessObject(obj, key) {
   // This function should take an object and a key as its arguments and return the value found at the provided key in the input object
-  return obj[key]
+  return obj[key];
 }
 
 runTest("accessObject() can access a property value using a key", function () {
@@ -22,11 +22,11 @@ runTest("accessObject() can access a property value using a key", function () {
 function checkIfPropertyExists(obj, key) {
   // This function should take an object and a key as its arguments and return true if the input object contains the provided key and false otherwise
 
-    if (obj.hasOwnProperty(key)) {
-        // handle prop as required
-        return true;
-    }
-    return false;
+  if (obj.hasOwnProperty(key)) {
+    // handle prop as required
+    return true;
+  }
+  return false;
 }
 
 runTest("checkIfPropertyExists() checks if a property exists inside an object", function () {
@@ -38,7 +38,7 @@ runTest("checkIfPropertyExists() checks if a property exists inside an object", 
 function createObject(arr) {
   // This function should take an array consisting of two elements representing a key/ value pair as its argument and return an object with a single property based on the input
   let obj = {};
-  obj[arr[0]] = arr[1]
+  obj[arr[0]] = arr[1];
   return obj;
 }
 
@@ -51,8 +51,8 @@ runTest("createObject() creates a new object from a key value pair", function ()
 function countProperties(obj) {
   // This function should take an object as its argument and return the total number of properties it contains
   let count = 0;
-  for (let person in obj) {
-      count++
+  for (let key in obj) {
+    count++;
   }
   return count;
 }
@@ -66,14 +66,12 @@ runTest("countProperties() counts the number of key-value pairs for a given obje
 function createArrow(direction) {
   // This function should take a string representing a direction ("left", "right", "up" or "down") as its argument and return the corresponding arrow ("←", "→", "↑", "↓")
   // You don't need to utilise an object here, but think about how you could do so
-  let compass = {"left" : "←","right" : "→","up" : "↑","down" : "↓"}
+  let compass = { left: "←", right: "→", up: "↑", down: "↓" };
   for (const key in compass) {
- if (key === direction) {
- 
-   return compass[key];
-}
-
-}
+    if (key === direction) {
+      return compass[key];
+    }
+  }
 }
 runTest("createArrow() will return an arrow pointing in the right direction", function () {
   check(createArrow("left")).isEqualTo("←");
@@ -98,8 +96,7 @@ function updateVoterAddress(voter, correctHouseNumber) {
   The voter's house number is incorrect and you should update it to be the one provided
   This function does NOT need to return anything
   */
-  voter['address']['houseNumber'] = correctHouseNumber;
-  
+  voter["address"]["houseNumber"] = correctHouseNumber;
 }
 
 runTest("updateVoterAddress() updates the voter's houseNumber", function () {
@@ -140,8 +137,8 @@ function createUserString(user) {
   This is a good use case for String Template Literals:
   https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
   */
-  
-return (`${'name'}: ${user['name']}, ${'age'}: ${user['age']}, ${'language'}: ${user['language']}`);
+
+  return `${"name"}: ${user["name"]}, ${"age"}: ${user["age"]}, ${"language"}: ${user["language"]}`;
 }
 
 runTest("createUserString() will create a message from an details object", function () {
@@ -165,12 +162,11 @@ function updateCoinMachine(coinMachine, coin) {
   */
   for (let key in coinMachine) {
     if (key === coin) {
-        coinMachine[key] ++
+      coinMachine[key]++;
     }
+  }
+  return coinMachine;
 }
-return coinMachine
-}
-
 
 runTest("updateCoinMachine() will create a message from an details object", function () {
   check(updateCoinMachine({ "1p": 0, "2p": 0, "5p": 0, "10p": 0 }, "1p")).isEqualTo({
