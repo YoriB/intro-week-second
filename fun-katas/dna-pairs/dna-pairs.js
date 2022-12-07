@@ -7,3 +7,4 @@ return dna.split('').map((char) => [char, pairs[char]]);
   };
 
 module.exports = {dnaPairs};
+//
