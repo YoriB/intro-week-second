@@ -25,8 +25,13 @@
 
 // ---
 
-function updateTasks(arr) {
-  return arr;
+
+  function updateTasks(obj, str1, str2){
+    if (str1.length > 0 && str2.length > 0) {
+   obj.tasks[2] = str1;
+   obj.tasks[3]=str2
+    } 
+   return obj;
 }
 
 module.exports = { updateTasks};
