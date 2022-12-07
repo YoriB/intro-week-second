@@ -1,16 +1,30 @@
 const {getTweetData} = require('../get-tweet-data/get-tweet-data');
 
 
-describe('getTweetData', () => {
-const Tweet = getTweetData;
- 
+describe('getTweetData', () =>{ 
 test('returns an object when an empty string is passed through ', () => {
-    expect(typeof Tweet(" ")).toBe("object");
-});
+//arrange
+ const input = "";
+ const expected = "object";
+ //act
+ const result = getTweetData(input);
+ //assert
+ expect(typeof(result)).toBe(expected);
+ });
 
-test('returns the length, the amount of hashtags and arrays, as well as an array with them ', () => {
-  expect(Tweet("My awesome tweet")).toEqual({ tags: [], mentions: [], tagCount: 0, mentionCount: 0, length: 16 });
+test('returns an object with the length of the tweet  when a tweet is passed through ', () => {
+  //arrange
+ const input = "My awesome tweet";
+ const expected = { tags: [], mentions: [], tagCount: 0, mentionCount: 0, length: 16 };
+ //act
+ const result = getTweetData(input);
+ //assert
+ expect(result).toEqual(expected);
+ });
 
+  const Tweet = getTweetData;
+
+  test('returns the amount of hashtags and arrays, as well as an array with them ', () => {
   expect(Tweet("My awesome tweet to @northcoders")).toEqual({ tags: [], mentions: ['@northcoders'], tagCount: 0, mentionCount: 1, length: 32 });
 
   expect(Tweet("My awesome tweet about #coding")).toEqual({ tags: ['#coding'], mentions: [], tagCount: 1, mentionCount: 0, length: 30 });
@@ -21,4 +35,4 @@ test('returns the length, the amount of hashtags and arrays, as well as an array
 
     
 });
-})
+});
