@@ -24,14 +24,18 @@ test('returns an object with the length of the tweet  when a tweet is passed thr
 
   const Tweet = getTweetData;
 
-  test('returns the amount of hashtags and arrays, as well as an array with them ', () => {
+  test('returns the amount of hashtags and arrays,  ', () => {
   expect(Tweet("My awesome tweet to @northcoders")).toEqual({ tags: [], mentions: ['@northcoders'], tagCount: 0, mentionCount: 1, length: 32 });
 
   expect(Tweet("My awesome tweet about #coding")).toEqual({ tags: ['#coding'], mentions: [], tagCount: 1, mentionCount: 0, length: 30 });
+  })
 
-  expect(Tweet("My awesome tweet about #coding to @northcoders")).toEqual({ tags: ['#coding'], mentions: ['@northcoders'], tagCount: 1, mentionCount: 1, length: 46 });
+  const Tweet2 = getTweetData;
+test("returns an array filled with the tags and mentions", () => {
+
+expect(Tweet2("My awesome tweet about #coding to @northcoders")).toEqual({ tags: ['#coding'], mentions: ['@northcoders'], tagCount: 1, mentionCount: 1, length: 46 });
     
-  expect(Tweet("I am #coding with @northcoders I love #coding and @northcoders")).toEqual({ tags: ['#coding','#coding' ], mentions: ['@northcoders', '@northcoders'], tagCount: 2, mentionCount: 2, length: 62 });
+  expect(Tweet2("I am #coding with @northcoders I love #coding and @northcoders")).toEqual({ tags: ['#coding','#coding' ], mentions: ['@northcoders', '@northcoders'], tagCount: 2, mentionCount: 2, length: 62 });
 
     
 });
