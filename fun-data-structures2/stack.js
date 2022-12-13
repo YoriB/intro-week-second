@@ -1,4 +1,4 @@
-function createStack(maxSize) {
+function createStack(num = 5) {
   // build your stack object inside this factory function
   // this.quantity = 0;
 
@@ -7,7 +7,7 @@ function createStack(maxSize) {
   const stack = {
     quantity: 0,
     storage: {},
-    maxSize: maxSize || 5,
+    maxSize: num || 5,
     push: push,
     pop: pop,
     peek: peek,

@@ -11,17 +11,32 @@ describe("createStack", () => {
     console.log(testStack);
     expect(testStack.maxSize).toBe(5);
   });
+
+  test("returns a number when max size is passed.", () => {
+    const testStack = createStack(3);
+    console.log(testStack);
+    expect(testStack.maxSize).toBe(3);
+  });
+
   test("returns a storage property to an empty object", () => {
     const testStack = createStack();
     console.log(testStack);
     expect(testStack.storage).toEqual({});
   });
+
   test("push function returns added items to the storage.", () => {
+    //add item to storage
+    //not an item if storage is full
+    //increase quantity
+
     const testStack = createStack();
     testStack.push("apple");
     console.log(testStack);
     expect(testStack.storage).toEqual({ 1: "apple" });
+    testStack.push('banana')
+    expect(testStack.storage).toEqual({ 1: "apple", 2 : 'banana'});
   });
+
   test("push function returns one added items to the storage.", () => {
     const testStack = createStack();
     testStack.push("apple");
@@ -31,19 +46,25 @@ describe("createStack", () => {
     expect(testStack.storage).toEqual({ 1: "apple", 2: "orange", 3: "banana" });
   });
 
-  test("push function returns added items to the storage.", () => {
+  test("it should ensure that the max size is not exceeded.", () => {
     const testStack = createStack();
     testStack.push("apple");
     testStack.push("orange");
     testStack.push("banana");
     testStack.push("kiwi");
     testStack.push("pear");
+    testStack.push("melon");
 
     console.log(testStack);
     expect(testStack.storage).toEqual({ 1: "apple", 2: "orange", 3: "banana", 4: "kiwi", 5: "pear" });
   });
 
   test("pop() return the last item removed from the storage.", () => {
+    //remove an item from storage
+    //doesn't remove if storage is empty
+    //returns the removed item
+
+
     const testStack = createStack();
     testStack.push("apple");
     testStack.push("orange");
@@ -51,13 +72,19 @@ describe("createStack", () => {
     expect(testStack.pop()).toEqual("banana");
     console.log(testStack);
     expect(testStack.storage).toEqual({ 1: "apple", 2: "orange" });
-  });
+  })
+  expect(testStack.quantity).toEqual(2);
+});
+
 
   test("returns a boolean when the stack is empty.", () => {
     const testStack = createStack();
     testStack.quantity === 0;
     expect(testStack.isEmpty()).toBe(true);
   });
+
+
+
 
   test("returns a boolean when the stack reaches max size.", () => {
     const testStack = createStack();
