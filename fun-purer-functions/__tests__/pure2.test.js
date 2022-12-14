@@ -13,8 +13,16 @@ describe('raiseSalaries', () => {
   
   test('does not mutate input array ', () => {
     //arrange
-    const input = (['Alice']);
-    const inputCopy = (['Alice']);
+    const input = ([
+      { name: 'Alice', salary: 3000 },
+      { name: 'Bob', salary: 2000 },
+      { name: 'Vel', salary: 4500 },
+    ]);
+    const inputCopy = ([
+      { name: 'Alice', salary: 3000 },
+      { name: 'Bob', salary: 2000 },
+      { name: 'Vel', salary: 4500 },
+    ]);
     //act
     const result = raiseSalaries(input);
     //arrange

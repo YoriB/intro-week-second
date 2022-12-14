@@ -6,11 +6,11 @@ describe('updateTasks', () => {
   const input1 = ({});
   const input2 =('')
   const input3 =('')
-  const expected = ({});
+  const expected = ('object');
   //act
   const result = updateTasks(input1, input2, input3);
   //arrange
-  expect(result).toEqual(expected);
+  expect(typeof (result)).toEqual(expected);
   });
   
   test('passes an array with the tasks property from the input not mutated ', () => {

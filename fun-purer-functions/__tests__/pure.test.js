@@ -19,4 +19,9 @@ describe('removeLastNumber', () => {
      //arrange
      expect(result).toEqual(expected);
   });
+
+
+  test('test an array has not been mutated', () => {
+    const input = [];
+  })
 });
