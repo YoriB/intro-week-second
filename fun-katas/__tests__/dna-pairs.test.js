@@ -11,7 +11,8 @@ describe("dnaPairs", () => {
     expect(result).toEqual(expected);
   });
 
-  test("creates a function that takes a string of DNA and returns it and its opposite strand in an array", () => {
+
+ test("creates a function that takes a string of DNA and returns it and its opposite strand in an array", () => {
     //arrange
     const input1 = "G";
     const expected1 = [["G", "C"]];
