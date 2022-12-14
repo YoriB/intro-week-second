@@ -8,7 +8,7 @@ function createStack(num = 5) {
     quantity: 0,
     storage: {},
     maxSize: num || 5,
-    push: push,
+    push : push ,
     pop: pop,
     peek: peek,
     isEmpty: isEmpty,
@@ -58,3 +58,9 @@ function maxSize() {
 }
 
 module.exports = createStack;
+
+
+// const person = {};
+// person['name'] = 'Katherine';
+
+// person = { name : 'Katherine'}

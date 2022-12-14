@@ -73,7 +73,7 @@ describe("createStack", () => {
     console.log(testStack);
     expect(testStack.storage).toEqual({ 1: "apple", 2: "orange" });
   })
-  expect(testStack.quantity).toEqual(2);
+  expect(testStack.quantity).toEqual();
 });
 
 
