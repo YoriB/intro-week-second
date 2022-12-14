@@ -1,0 +1,12 @@
+{
+  "name": "location",
+  "version": "1.0.0",
+  "description": "",
+  "main": "location.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
