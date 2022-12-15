@@ -54,3 +54,8 @@ expect(result).toEqual(expected);
 });
 
 })
+
+Behaviour
+
+
+// Pure test returns a new array and does not mutate input array

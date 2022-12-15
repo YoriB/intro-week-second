@@ -17,21 +17,31 @@
 //   { name: 'Tao', age: 47, location: 'manchester' }
 // ];
 function updateRemoteStudents(arr) {
-    
   const newArr = [];
-   
-  for (let i = 0; i < arr.length; i++) { 
-  if (!arr[i].hasOwnProperty('location')){
-       arr[i]['location'] = 'remote'
-  }
-  const  newObj = {name : arr[i].name, age : arr[i].age, location : arr[i].location}
-  
-  newArr.push(newObj);
-  
-  }
-  
-  return newArr;
-  
+
+  for (let i = 0; i < arr.length; i++) {
+    if (!arr[i].hasOwnProperty("location")) {
+      arr[i]["location"] = "remote";
+    }
+    const newObj = { name: arr[i].name, age: arr[i].age, location: arr[i].location };
+
+    newArr.push(newObj);
   }
 
-module.exports = {updateRemoteStudents}
+  return newArr;
+}
+
+// const updateRemoteStudents = (arrayOfStudents) => {
+//   if (!arrayOfStudents.length) return [];
+
+// const arrayToReturn = [...arrayOfStudents]
+
+//   for (let i = 0; i < arr.length; i++){
+//     if (!arrayOfStudents[i].location {
+//       arrayOfStudents[i].location = 'remote'
+//     }
+//   }
+//   return arrayToReturn;
+// }
+
+module.exports = { updateRemoteStudents };
