@@ -1,0 +1,23 @@
+{
+  "name": "fun-review-2",
+  "version": "1.0.0",
+  "description": "Today you have several sections to work through. You are expected to use TDD throughout in order to demonstrate your understanding of the topics and of good TDD practices (the tests for _Section 3 - Using Closures_ have been written for you). Have fun!",
+  "main": "challenge1.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/northcoders/fun-review-day-2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/northcoders/fun-review-day-2/issues"
+  },
+  "homepage": "https://github.com/northcoders/fun-review-day-2#readme"
+}
